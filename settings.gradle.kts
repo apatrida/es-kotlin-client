@@ -2,6 +2,7 @@ rootProject.name = "es-kotlin-client"
 
 pluginManagement {
     repositories {
+        mavenLocal()
         gradlePluginPortal()
     }
 }
