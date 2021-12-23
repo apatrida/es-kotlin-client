@@ -7,6 +7,7 @@ import java.net.URL
 
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
         maven("https://jitpack.io") {
             content {
@@ -33,6 +34,7 @@ plugins {
 apply(plugin = "com.github.jillesvangurp.codegen")
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven(url = "https://jitpack.io") {
         content {
@@ -131,8 +133,11 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-annotations:_")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:_")
 
+    api("org.opensearch:opensearch-core:_")
     api("org.elasticsearch.client:elasticsearch-rest-high-level-client:_")
+    api("org.opensearch.client:opensearch-rest-high-level-client:_")
     api("org.elasticsearch.client:elasticsearch-rest-client-sniffer:_")
+    api("org.opensearch.client:opensearch-rest-client-sniffer:_")
 
     // bring your own logging, but we need some in tests
     testImplementation("org.slf4j:slf4j-api:_")
