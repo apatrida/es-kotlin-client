@@ -7,17 +7,19 @@ import java.net.URL
 
 buildscript {
     repositories {
-        mavenLocal()
+//        mavenLocal()
         mavenCentral()
+        maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ktor/eap") }
         maven("https://jitpack.io") {
             content {
+                includeGroup("com.github.apatrida")
+                includeGroup("com.github.apatrida.es-kotlin-codegen-plugin")
                 includeGroup("com.github.jillesvangurp")
-                includeGroup("com.github.jillesvangurp.es-kotlin-codegen-plugin")
             }
         }
     }
     dependencies {
-        classpath("com.github.jillesvangurp:es-kotlin-codegen-plugin:_")
+        classpath("com.github.apatrida:es-kotlin-codegen-plugin:_")
     }
 }
 
@@ -31,13 +33,14 @@ plugins {
     `maven-publish`
 }
 
-apply(plugin = "com.github.jillesvangurp.codegen")
+apply(plugin = "com.github.apatrida.codegen")
 
 repositories {
-    mavenLocal()
+   // mavenLocal()
     mavenCentral()
     maven(url = "https://jitpack.io") {
         content {
+            includeGroup("com.github.apatrida")
             includeGroup("com.github.jillesvangurp")
         }
     }
@@ -167,7 +170,7 @@ dependencies {
 }
 
 val artifactName = "es-kotlin-client"
-val artifactGroup = "com.github.jillesvangurp"
+val artifactGroup = "com.github.apatrida"
 
 val sourceJar = task("sourceJar", Jar::class) {
     dependsOn(tasks["classes"])
